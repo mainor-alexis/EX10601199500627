@@ -55,3 +55,15 @@ router.put('/:id', (req, res, next)=>{
   });//map
   res.status(200).json(o: originalReceta, m: modificarReceta);
 });//put
+
+router.delete('/:id', (req, res, next)=>{
+  var id = req.params.id;
+  var deleteReceta = {};
+  recetaCollection = recetaCollection.filter( (e, i) => {
+    if(e.id === id){
+      deleteReceta = Object.assign({}, e);
+      return false;
+    }
+    return e;
+  res.status(403).json(d: deleteReceta, c:recetaCollection);
+});//delete
