@@ -30,3 +30,14 @@ recetaCollection.push(
 router.get('/', (req, res, next)=>{
   res.status(200).json(recetaCollection);
 });//get
+
+router.post('/', (req, res, next)=>{
+  var nuevaReceta = Object.assign(
+    {},
+    recetaStruct,
+    {id:uuid()},
+    req.body
+  );
+  recetaCollection.push(nuevaReceta);
+  res.status(200).json(nuevaReceta);
+});//post
